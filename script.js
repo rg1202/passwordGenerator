@@ -14,13 +14,24 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-/* PSEUDO CODE 
-
-
-
-
-
-
+/* PSEUDO CODE 9/30/2023
+1. Click Button to activate the password criteria prompts
+2. Criteria Prompt 1 appears --> window.prompt-->length of password..) *between 8-128 characaters*
+3. User Types nunber for passwordLength
+4. passwordLength var assinged number value between 8-128 
+  a. code validates value
+5. Criteria Prompt 2 appears --> window.prompt-->characters type = include lowercase TRUE/FALSE
+6. User chooses , if yes var lowercase = TRUE, if no, lowercase = FALSE
+  a. code validates value
+7. Criteria Prompt 3 appears --> window.prompt-->include uppercase, numeric, and/or special characters
+8. Follow same logic depedning on user input for boolean value on remaining special charcters
+  a. code validates value
+9. Require that a value/answer be selected for each criteria question and if charcter type chosen, require cannot answer null value
+10. Javascript code generates randomized password at passwordlength made up of the user determined criteria
+11. Display in password generator supplied windown
+12. BONUS: store in local memory
+13. BONUS2: Include a button that copies the password to clipboard
+*/
 
 /* USER/CCEPTANCE CRITERIA FOR REFERENCE
 
@@ -51,6 +62,5 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
-
-
+*/
 
