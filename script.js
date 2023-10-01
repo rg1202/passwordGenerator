@@ -1,17 +1,45 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate"); //Generate Password Button
+
+//Define function generatePassword
+function generatePassword(){
+  console.log("click")
+
+  //prompts for password criteria: length, case, numbers, special
+
+  prompt("How many characters? (8-128 charcters)")
+  prompt("Do you want to include lowercase?")
+  prompt("Do you want to include uppercase?")
+  prompt("Do you want to include numbers?")
+  prompt("Do you want to include special charcters?")
+
+  //validate inputs according to rules
+
+  
+
+  //return "test" test a Return to the password field to 
+  }
+
 
 // Write password to the #password input
-function writePassword() {
+function writePassword() {       
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
+
+//Pre-writing: Inspect, Console thows ReferenceError: generatePassword is not defined
+//TO DO: will need to write code to define generatePassword() which is called when generateBtn is clicked
+
+
+  
 }
 
+
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword); //button clicks and that calls the writePassword() function
 
 
 /* PSEUDO CODE 9/30/2023
