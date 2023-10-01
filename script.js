@@ -7,18 +7,53 @@ function generatePassword(){
 
   //prompts for password criteria: length, case, numbers, special
 
-  prompt("How many characters? (8-128 charcters)")
-  prompt("Do you want to include lowercase?")
-  prompt("Do you want to include uppercase?")
-  prompt("Do you want to include numbers?")
-  prompt("Do you want to include special charcters?")
+  //prompt("How many characters? (8-128 charcters)") 
+  //prompt("Do you want to include lowercase?")
+  //prompt("Do you want to include uppercase?")
+  //prompt("Do you want to include numbers?")
+  //prompt("Do you want to include special charcters?")
 
-  //validate inputs according to rules
+  //prompt for characters length
+  var criteriaLength = window.prompt("How many characters? (8-128 characters)")
+  //validate choice with criteria that ensures a number between 8 and 128 charcters is entered//
+  if (isNaN(criteriaLength)) {
+    alert("You did not enter a number, try again.");
+  }else {
+    var num = parseFloat(criteriaLength);
+  if (num < 8 || num > 128) {
+    alert("You entered a number outside of the range, try again.")
+  }
+  }
+  //prompt for lowercase 
+
+  var criteriaLowercase = window.confirm("Do you want lowercase characters?")
+
+  //prompt for uppercase 
+
+  var criteriaUppercase = window.confirm("Do you want uppercase characters?")
+
+  //prompt for numbers 
+
+  var criteriaNum = window.confirm("Do you want lowercase characters?")
+
+  //prompt for special characters
+
+  var criteriaSpecial = window.confirm("Do you want to include special characters (#$%&'()*+,-./:;<=>?@[\]^_`{|}~?)")
+
+
 
   
 
-  //return "test" test a Return to the password field to 
-  }
+  //validate inputs according to rules
+
+
+
+  //return "test" --test a Return to the password field to 
+
+
+ return criteriaLength + criteriaLowercase
+
+}
 
 
 // Write password to the #password input
