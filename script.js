@@ -21,37 +21,52 @@ function generatePassword(){
   }else {
     var num = parseFloat(criteriaLength);
   if (num < 8 || num > 128) {
-    alert("You entered a number outside of the range, try again.")
+    alert("You entered a number outside of the range, try again.");
   }
   }
-  //prompt for lowercase 
+  //prompt for lowercase, pass user input into var 
 
-  var criteriaLowercase = window.confirm("Do you want lowercase characters?")
+  var criteriaLowercase = window.confirm("Do you want lowercase characters?");
 
-  //prompt for uppercase 
+  //prompt for uppercase, pass user input into var 
 
-  var criteriaUppercase = window.confirm("Do you want uppercase characters?")
+  var criteriaUppercase = window.confirm("Do you want uppercase characters?");
 
-  //prompt for numbers 
+  //prompt for numbers, pass user input into var 
 
-  var criteriaNum = window.confirm("Do you want lowercase characters?")
+  var criteriaNum = window.confirm("Do you want lowercase characters?");
 
-  //prompt for special characters
+  //prompt for special characters, pass user input into var
 
-  var criteriaSpecial = window.confirm("Do you want to include special characters (#$%&'()*+,-./:;<=>?@[\]^_`{|}~?)")
+  var criteriaSpecial = window.confirm("Do you want to include special characters (#$%&'()*+,-./:;<=>?@[\]^_`{|}~?)");
 
+ //combine criteria choices
+ 
+  var criteriaCombine = "";
+  if (criteriaLowercase) criteriaCombine += "abcdefghijklmnopqrstuvwxyz";
+  if (criteriaUppercase) criteriaCombine += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  if (criteriaNum) criteriaCombine += "0123456789";
+  if (criteriaSpecial) criteriaCombine += "#$%&'()*+,-./:;<=>?@[\]^_`{|}~?)";
 
+ //validate inputs according to rules
 
-  
+  if (criteriaCombine === "") {
+    alert("You selected, "+ criteriaLength + "characters, but no character type. There needs to be at least one character type chosen. Try again.");
+    return null;
+  }
 
-  //validate inputs according to rules
-
-
+ //generate random password with criteria
+  var genPassword = "";
+  for (let i = 0; i < criteriaLength; i++) {
+       var randomPass = Math.floor(Math.random() * criteriaCombine.length);
+       genPassword += criteriaCombine.charAt(randomPass);
+0    
+  } 
 
   //return "test" --test a Return to the password field to 
 
 
- return criteriaLength + criteriaLowercase
+ return genPassword; //return the random password with criteria
 
 }
 
