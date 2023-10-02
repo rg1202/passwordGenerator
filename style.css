@@ -50,8 +50,17 @@ header {
   height: 2px;
 }
 
+/*add display flex to accommodate for clipboard image */
 .card-body {
+  display: flex;
   min-height: 100px;
+}
+
+/* add styling to clipboard image */
+.card-body img {
+  height: 30px;
+  margin-top: 15px;
+  cursor: pointer;
 }
 
 .card-footer {
@@ -124,7 +133,7 @@ button:active{
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
+  border: none #c0c7cf;
   border-radius: 6px;
   resize: none;
   overflow: hidden;

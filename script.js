@@ -18,10 +18,12 @@ function generatePassword(){
   //validate choice with criteria that ensures a number between 8 and 128 charcters is entered//
   if (isNaN(criteriaLength)) {
     alert("You did not enter a number, try again.");
+    return "Try again."
   }else {
     var num = parseFloat(criteriaLength);
   if (num < 8 || num > 128) {
     alert("You entered a number outside of the range, try again.");
+    return "Try again."
   }
   }
   //prompt for lowercase, pass user input into var 
@@ -40,7 +42,7 @@ function generatePassword(){
 
   var criteriaSpecial = window.confirm("Do you want to include special characters (#$%&'()*+,-./:;<=>?@[\]^_`{|}~?)");
 
- //combine criteria choices
+ //combine criteria choices, define characters lower, upper, num, special
  
   var criteriaCombine = "";
   if (criteriaLowercase) criteriaCombine += "abcdefghijklmnopqrstuvwxyz";
@@ -48,19 +50,18 @@ function generatePassword(){
   if (criteriaNum) criteriaCombine += "0123456789";
   if (criteriaSpecial) criteriaCombine += "#$%&'()*+,-./:;<=>?@[\]^_`{|}~?)";
 
- //validate inputs according to rules
+ //validate inputs according to rules; make sure at least one character type is chosen, otherwise what will be generatad
 
   if (criteriaCombine === "") {
     alert("You selected, "+ criteriaLength + "characters, but no character type. There needs to be at least one character type chosen. Try again.");
-    return null;
+    return "Try Again. Choose at least one character type.";
   }
 
- //generate random password with criteria
+ //generate random password with criteria, loop through, charat method to return value at index
   var genPassword = "";
   for (let i = 0; i < criteriaLength; i++) {
        var randomPass = Math.floor(Math.random() * criteriaCombine.length);
        genPassword += criteriaCombine.charAt(randomPass);
-0    
   } 
 
   //return "test" --test a Return to the password field to 
@@ -81,15 +82,21 @@ function writePassword() {
 
 //Pre-writing: Inspect, Console thows ReferenceError: generatePassword is not defined
 //TO DO: will need to write code to define generatePassword() which is called when generateBtn is clicked
-
-
-  
 }
-
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword); //button clicks and that calls the writePassword() function
+
+//BONUS: add a button to copy the password to clipboard
+
+function copyPassword(){
+  password.select();
+  document.execCommand("copy");
+
+  alert("Password copied to clipboard.")
+
+}
+
 
 
 /* PSEUDO CODE 9/30/2023
@@ -141,4 +148,3 @@ WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
 */
-
