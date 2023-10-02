@@ -16,7 +16,7 @@ function generatePassword(){
   //prompt for characters length
   var criteriaLength = window.prompt("How many characters? (8-128 characters)")
   //validate choice with criteria that ensures a number between 8 and 128 charcters is entered//
-  if (isNaN(criteriaLength)) {
+  if (isNaN(criteriaLength)) {  
     alert("You did not enter a number, try again.");
     return "Try again."
   }else {
@@ -24,6 +24,11 @@ function generatePassword(){
   if (num < 8 || num > 128) {
     alert("You entered a number outside of the range, try again.");
     return "Try again."
+  }
+
+  if (criteriaLength === "" || " ")   {
+    alert("You have to enter something. Try Again.")
+    return "Try Again."
   }
   }
   //prompt for lowercase, pass user input into var 
@@ -87,7 +92,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword); //button clicks and that calls the writePassword() function
 
-//BONUS: add a button to copy the password to clipboard
+//BONUS 1: add a button to copy the password to clipboard
 
 function copyPassword(){
   password.select();
@@ -96,6 +101,10 @@ function copyPassword(){
   alert("Password copied to clipboard.")
 
 }
+
+
+//BONUS 2: Save Generated Password to Local Memory
+
 
 
 
