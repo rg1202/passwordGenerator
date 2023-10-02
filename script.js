@@ -26,7 +26,7 @@ function generatePassword(){
     return "Try again."
   }
 
-  if (criteriaLength === "" || " ")   {
+  if (criteriaLength === "")   {
     alert("You have to enter something. Try Again.")
     return "Try Again."
   }
@@ -103,7 +103,19 @@ function copyPassword(){
 }
 
 
-//BONUS 2: Save Generated Password to Local Memory
+//BONUS 2: Save Generated Password to Local storage
+
+// save to local
+function savePassword(genPassword) {
+  localStorage.setItem('savedPassword',genPassword);
+}
+
+// retreive from local
+function retrievePassword() {
+  return localStorage.getItem('savePassword');
+}
+
+
 
 
 
