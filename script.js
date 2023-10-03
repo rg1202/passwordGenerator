@@ -106,14 +106,30 @@ function copyPassword(){
 //BONUS 2: Save Generated Password to Local storage
 
 // save to local
-function savePassword(genPassword) {
-  localStorage.setItem('savedPassword',genPassword);
+function savePasswordToLocal(password) {
+  var passwordTextarea = document.getElementById('password');
+  var password = passwordText.value
+  localStorage.setItem('savedPassword', password);
+  console.log('Password saved to local storage:', password);
 }
 
 // retreive from local
-function retrievePassword() {
-  return localStorage.getItem('savePassword');
+function retrievePasswordFromLocal() {
+  return localStorage.getItem('savedPassword');
 }
+function handleRetrieveButtonClick(){
+  var retrievedPassword = retrievePasswordFromLocal();
+  if(retrievedPassword) {
+    console.log("Retrieved password:", retrievedPassword);
+  } else 
+    console.log("No saved password found.")
+  }
+
+  var saveButton = document.getElementById('save');
+  var retrieveButton = document.getElementById('retrieve');
+
+  saveButton.addEventListener('click', savePasswordToLocal);
+  retrieveButton.addEventListener('click', handleRetrieveButtonClick);
 
 
 
