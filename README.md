@@ -42,5 +42,7 @@ Also able to save to and retreive from local storage for later use
 
 
 ## Mockup
-see Assets\mockupPasswordGen.png
+original: Assets\03-javascript-homework-demo.png
+
+new Assets\mockupPasswordGen.png
 
