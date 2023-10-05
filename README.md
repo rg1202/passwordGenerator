@@ -38,7 +38,8 @@ THEN the password is either displayed in an alert or written to the page
 
 ## BONUS ADD ONS
 Developer added the ability to copy to the the clipboard using when clicking the clipboard icon
-Also able to save to and retreive from local storage for later use
+Also able to save to and retreive from local storage for later use 
+Shows previously generated password along with date and time it was generated
 
 
 ## Mockup
