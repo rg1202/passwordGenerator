@@ -1,8 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate"); //Generate Password Button
 //bonus - add saving to local storage with date and time it was saved
-var savedPassword = localStorage.getItem("savedPassword")
-var savedDateTime = new Date();
+var savedPassword = localStorage.getItem("savedPassword");
 
 //date properties
 function formatDateTime(date) {
@@ -14,15 +13,13 @@ function formatDateTime(date) {
     minute: 'numeric',
     hour12: true,
   };
-  
+
   return date.toLocaleDateString('en-US', timeParams);
 }
 
 //store formatted date variable based upon function properties
-var formattedDateTime = formatDateTime(savedDateTime);
 //Define function generatePassword
 
-password.textContent = ("Previously Generated Password:" +"  \n"+  savedPassword + "\n at \n" + formattedDateTime);
 
 function generatePassword(){
   console.log("click")
@@ -54,23 +51,14 @@ function generatePassword(){
   }
   }
   //prompt for lowercase, pass user input into var 
-
   var criteriaLowercase = window.confirm("Do you want lowercase characters?");
-
   //prompt for uppercase, pass user input into var 
-
   var criteriaUppercase = window.confirm("Do you want uppercase characters?");
-
   //prompt for numbers, pass user input into var 
-
   var criteriaNum = window.confirm("Do you want lowercase characters?");
-
   //prompt for special characters, pass user input into var
-
   var criteriaSpecial = window.confirm("Do you want to include special characters (#$%&'()*+,-./:;<=>?@[\]^_`{|}~?)");
-
  //combine criteria choices, define characters lower, upper, num, special
- 
   var criteriaCombine = "";
   if (criteriaLowercase) criteriaCombine += "abcdefghijklmnopqrstuvwxyz";
   if (criteriaUppercase) criteriaCombine += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -78,7 +66,6 @@ function generatePassword(){
   if (criteriaSpecial) criteriaCombine += "#$%&'()*+,-./:;<=>?@[\]^_`{|}~?)";
 
  //validate inputs according to rules; make sure at least one character type is chosen, otherwise what will be generatad
-
   if (criteriaCombine === "") {
     alert("You selected, "+ criteriaLength + "characters, but no character type. There needs to be at least one character type chosen. Try again.");
     return "Try Again. Choose at least one character type.";
@@ -91,50 +78,57 @@ function generatePassword(){
        genPassword += criteriaCombine.charAt(randomPass);
   } 
 
-  //return "test" --test a Return to the password field to 
-
-
- return genPassword; //return the random password with criteria
-
+ //return the random password with criteria
+ return genPassword; 
 }
-
-
 // Write password to the #password input
 function writePassword() {       
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+  // Get the current date and time
+  var savedDateTime = new Date()
+  var formattedDateTime = formatDateTime(savedDateTime);
+
   //set value in local storage
-  
   localStorage.setItem("savedPassword", password);
   localStorage.setItem("savedDateTime", formattedDateTime);
-  passwordText.value = password
-  
+  passwordText.value = password;
 
-  
-
-//Pre-writing: Inspect, Console thows ReferenceError: generatePassword is not defined
-//TO DO: will need to write code to define generatePassword() which is called when generateBtn is clicked
+  var savedDataElement = document.getElementById("savedData");
+  savedDataElement.textContent = "Previously Generated Password: " + password + " at " + formattedDateTime;
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword); //button clicks and that calls the writePassword() function
+
+
+// Add event listener to generate button
 
 //BONUS 1: add a button to copy the password to clipboard
 
-function copyPassword(){
-  password.select();
+function copyPassword() {
+  var passwordText = document.querySelector("#password");
+  passwordText.select();
   document.execCommand("copy");
 
-  alert("Password copied to clipboard.")
-
+  alert("Password copied to clipboard.");
 }
 
 
 //BONUS 2: Save Generated Password to Local storage
+function displaySavedPassword() {
+  var storedPassword = localStorage.getItem("savedPassword");
+  var storedDateTime = localStorage.getItem("savedDateTime");
+  var savedDataElement = document.getElementById("savedData");
 
+  if (storedPassword && storedDateTime) {
+    savedDataElement.textContent = "Previously Generated Password: " + storedPassword + " @ " + storedDateTime;
+  } else {
+    savedDataElement.textContent = "No saved password data found.";
+  }
+}
 
-
+displaySavedPassword();
 
 
 /* PSEUDO CODE 9/30/2023
