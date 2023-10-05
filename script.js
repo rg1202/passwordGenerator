@@ -1,7 +1,29 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate"); //Generate Password Button
+//bonus - add saving to local storage with date and time it was saved
+var savedPassword = localStorage.getItem("savedPassword")
+var savedDateTime = new Date();
 
+//date properties
+function formatDateTime(date) {
+  var timeParams = {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  };
+  
+  return date.toLocaleDateString('en-US', timeParams);
+}
+
+//store formatted date variable based upon function properties
+var formattedDateTime = formatDateTime(savedDateTime);
 //Define function generatePassword
+
+password.textContent = ("Previously Generated Password:" +"  \n"+  savedPassword + "\n at \n" + formattedDateTime);
+
 function generatePassword(){
   console.log("click")
 
@@ -82,8 +104,14 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  //set value in local storage
+  
+  localStorage.setItem("savedPassword", password);
+  localStorage.setItem("savedDateTime", formattedDateTime);
+  passwordText.value = password
+  
 
+  
 
 //Pre-writing: Inspect, Console thows ReferenceError: generatePassword is not defined
 //TO DO: will need to write code to define generatePassword() which is called when generateBtn is clicked
@@ -104,33 +132,6 @@ function copyPassword(){
 
 
 //BONUS 2: Save Generated Password to Local storage
-
-// save to local
-function savePasswordToLocal(password) {
-  var passwordTextarea = document.getElementById('password');
-  var password = passwordText.value
-  localStorage.setItem('savedPassword', password);
-  console.log('Password saved to local storage:', password);
-}
-
-// retreive from local
-function retrievePasswordFromLocal() {
-  return localStorage.getItem('savedPassword');
-}
-function handleRetrieveButtonClick(){
-  var retrievedPassword = retrievePasswordFromLocal();
-  if(retrievedPassword) {
-    console.log("Retrieved password:", retrievedPassword);
-  } else 
-    console.log("No saved password found.")
-  }
-
-  var saveButton = document.getElementById('save');
-  var retrieveButton = document.getElementById('retrieve');
-
-  saveButton.addEventListener('click', savePasswordToLocal);
-  retrieveButton.addEventListener('click', handleRetrieveButtonClick);
-
 
 
 
