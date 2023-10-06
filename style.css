@@ -138,7 +138,7 @@ button:active{
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: none #c0c7cf;
+  border: solid #c0c7cf;
   border-radius: 6px;
   resize: none;
   overflow: hidden;
@@ -159,7 +159,7 @@ button:active{
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: none #c0c7cf;
+  border: dashed #c0c7cf;
   border-radius: 6px;
   resize: none;
   overflow: hidden;

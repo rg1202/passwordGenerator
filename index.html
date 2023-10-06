@@ -26,10 +26,14 @@
           <img id="copy" src="Assets/copy-to-clipboard-icon-9.jpg" onclick="copyPassword()"> 
         </div>
           <div id="savedData">
+            <h3>Previously Generated Passwords:</h3>
             <textarea readonly id="savedpassword" placeholder="Saved Passwords"></textarea>
+            <textarea readonly id="passwordList" rows="5" cols="50"></textarea>
           </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
+          <button onclick="location.reload()" class="btn">Refresh</button>
+          <button id="clearLocalStorage" class="btn">Clear Local Storage</button>
         </div>
         
       </div>

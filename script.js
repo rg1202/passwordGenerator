@@ -3,6 +3,14 @@ var generateBtn = document.querySelector("#generate"); //Generate Password Butto
 //bonus - add saving to local storage with date and time it was saved
 var savedPassword = localStorage.getItem("savedPassword");
 
+// Add an event listener to the button
+document.getElementById("clearLocalStorage").addEventListener("click", function() {
+  localStorage.clear(); // This clears all data in local storage
+  alert("Local Storage has been cleared.");
+});
+
+
+
 //date properties
 function formatDateTime(date) {
   var timeParams = {
@@ -90,13 +98,13 @@ function writePassword() {
   var savedDateTime = new Date()
   var formattedDateTime = formatDateTime(savedDateTime);
 
-  //set value in local storage
+//set value in local storage
   localStorage.setItem("savedPassword", password);
   localStorage.setItem("savedDateTime", formattedDateTime);
-  passwordText.value = password;
+ passwordText.value = password;
 
-  var savedDataElement = document.getElementById("savedData");
-  savedDataElement.textContent = "Previously Generated Password: " + password + " at " + formattedDateTime;
+var savedDataElement = document.getElementById("savedData");
+ savedDataElement.textContent = "Previously Generated Password: " + password + " at " + formattedDateTime;
 }
 
 generateBtn.addEventListener("click", writePassword); //button clicks and that calls the writePassword() function
@@ -122,10 +130,10 @@ function displaySavedPassword() {
   var savedDataElement = document.getElementById("savedData");
 
   if (storedPassword && storedDateTime) {
-    savedDataElement.textContent = "Previously Generated Password: " + storedPassword + " @ " + storedDateTime;
+  savedDataElement.textContent = "Previously Generated Password: " + storedPassword + " @ " + storedDateTime;
   } else {
-    savedDataElement.textContent = "No saved password data found.";
-  }
+  savedDataElement.textContent = "No saved password data found.";
+ }
 }
 
 displaySavedPassword();
